@@ -18,9 +18,16 @@
                  @endif
                  <br>
              </div>
-         <div>
+<style>
+    .p-bio p strong
+    {
+        font-weight: 700;
+
+    }
+</style>
+         <div class="p-bio">
              <p><strong>Nombre</strong> {{ $agent->name }}</p>
-             <p><strong>Slug</strong> {{ $agent->slug }}</p>
+             {{--<p><strong>Slug</strong> {{ $agent->slug }}</p>--}}
              <p><strong>Descripción</strong> {!! $agent->biography !!}</p>
              <p><strong>Dirección</strong> {{ $agent->address }}</p>
              <p><strong>País</strong> {{ $agent->country }}</p>

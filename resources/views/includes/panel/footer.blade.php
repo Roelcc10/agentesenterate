@@ -1,19 +1,23 @@
+<style>
+  .pb-30 {
+    padding-bottom: 30px;
+  }
+  .copyright-text.text-center > p {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  /*.copyright-text a {*/
+    /*color: #ffffff;*/
+  /*}*/
+</style>
 <footer class="footer">
-  <div class="row align-items-center justify-content-xl-between">
-    <div class="col-xl-6">
-      <div class="copyright text-center text-xl-left text-muted">
-         <a href="https://www.laravel.com" class="font-weight-bold ml-1" target="_blank">{{ config('app.name') }}</a>
+  <div class="footer-bottom pb-30">
+    <div class="container">
+
+      <div class="copyright-text text-center" style="padding-top: 20px;">
+        <p>Copyright © 2020. Todos los derechos reservados | Diseñado por: <a href="https://www.firstimageus.com/" target="_blank"><img src="http://enterate.com/wp-content/themes/enterate.com/assets/img/first.png" alt=""></a></p>
       </div>
     </div>
-    <div class="col-xl-6">
-      <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-        <li class="nav-item">
-          <a href="http://www.firstimageusa.com" class="nav-link" target="_blank">&copy; <img src="http://www.firstimageusa.com/demos/demo_web_robotitus/images/first.png" alt=""></a>
-        </li>
-        {{--<li class="nav-item">--}}
-          {{--<a href="#" class="nav-link" target="_blank">Acerca de</a>--}}
-        {{--</li>--}}
-      </ul>
-    </div>
   </div>
+
 </footer>

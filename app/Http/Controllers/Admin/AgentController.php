@@ -101,7 +101,8 @@ class AgentController extends Controller
     public function edit($id)
     {
 
-        $agent       = Agent::find($id);
+//        $agent       = Agent::find($id);
+        $agent= Agent::where('id', $id)->firstOrFail();
         $this->authorize('pass', $agent);
 
         return view('admin.agents.edit', compact('agent'));
@@ -117,6 +118,8 @@ class AgentController extends Controller
     public function update(AgentUpdateRequest $request, $id)
     {
         $agent = Agent::find($id);
+//        $agent= Agent::where('id', $id)->firstOrFail();
+
         $this->authorize('pass', $agent);
 
         $agent->fill($request->all())->save();

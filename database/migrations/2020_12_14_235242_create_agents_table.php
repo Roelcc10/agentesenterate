@@ -22,9 +22,14 @@ class CreateAgentsTable extends Migration
             $table->string('slug', 128)->unique();
             $table->mediumText('excerpt')->nullable();
             $table->text('biography');
-            $table->string('address');
+
+            $table->string('type')->nullable();
+            $table->string('title')->nullable();
             $table->string('country');
             $table->string('city');
+            $table->string('address');
+            $table->string('state')->nullable();
+            $table->string('zip');
             $table->string('latitud')->nullable();
             $table->string('longitud')->nullable();
             $table->string('phone')->nullable();

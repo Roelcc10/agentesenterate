@@ -1,11 +1,28 @@
 {{ Form::hidden('user_id', auth()->user()->id) }}
 <div class="form-group">
+    {{ Form::label('title', 'Título del agente') }}
+    {{ Form::text('title', null, ['class' => 'form-control', 'id' => 'title']) }}
+</div>
+<div class="form-group">
 	{{ Form::label('name', 'Nombre del agente') }}
 	{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
 </div>
 <div class="form-group">
-	{{ Form::label('slug', 'URL amigable') }}
-	{{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug']) }}
+    {!! Form::select('type', [null => 'Selecciona el tipo'] + ['auto' => 'Auto','hogar'=>'Hogar','comercial'=>'Comercial','vida'=>'Vida','salud'=>'Salud'], null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {{ Form::label('slug', 'Estado') }}
+    <label>
+        {{ Form::radio('status', 'PUBLISHED') }} Publicado
+    </label>
+    <label>
+        {{ Form::radio('status', 'DRAFT') }} Borrador
+    </label>
+</div>
+<div class="form-group">
+	{{ Form::label('slug', 'URL') }}
+	{{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug', 'readonly']) }}
 </div>
 <div class="form-group">
 	{{ Form::label('email', 'Email') }}
@@ -16,26 +33,42 @@
 	{{ Form::file('image',  ['class' => 'form-control', 'id' => 'image']) }}
 </div>
 <div class="form-group">
+    <div class="row"  style="display: flex;">
+<div class="col-md-4">
+    {{ Form::label('state', 'Estado') }}
+    {{ Form::text('state', null, ['class' => 'form-control', 'id' => 'estado']) }}
+</div>
+<div class="col-md-4">
 	{{ Form::label('country', 'País') }}
 	{{ Form::text('country', null, ['class' => 'form-control', 'id' => 'txtEstado']) }}
 </div>
-<div class="form-group">
-	{{ Form::label('city', 'Ciudad') }}
-	{{ Form::text('city', null, ['class' => 'form-control', 'id' => 'txtCiudad']) }}
+        <div class="col-md-4">
+            {{ Form::label('city', 'Ciudad') }}
+            {{ Form::text('city', null, ['class' => 'form-control', 'id' => 'txtCiudad']) }}
+        </div>
+    </div>
+<div class="row" style="display: flex; padding-top: 20px">
+
+    <div class="col-md-6">
+        {{ Form::label('address', 'Dirección') }}
+        {{ Form::text('address', null, ['class' => 'form-control', 'id' => 'txtDireccion']) }}
+    </div>
+    <div class="col-md-6">
+        {{ Form::label('zip', 'Zip code') }}
+        {{ Form::text('zip', null, ['class' => 'form-control', 'id' => 'zip']) }}
+    </div>
 </div>
+    </div>
+
 <div class="form-group">
-	{{ Form::label('address', 'Dirección') }}
-	{{ Form::text('address', null, ['class' => 'form-control', 'id' => 'txtDireccion']) }}
-</div>
-<div class="row">
-	<div class="col-md-12 ">
-		<div class="col-md-6">
+	<div class="row"  style="display: flex;">
+		<div class="col-md-6" >
 			{{ Form::label('latitud', 'Latitud') }}
-			{{ Form::text('latitud', null, ['class' => 'form-control', 'id' => 'txtLat']) }}
+			{{ Form::text('latitud', null, ['class' => 'form-control', 'id' => 'txtLat', 'readonly']) }}
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6" >
 			{{ Form::label('longitud', 'Longitud') }}
-			{{ Form::text('longitud', null, ['class' => 'form-control', 'id' => 'txtLng']) }}
+			{{ Form::text('longitud', null, ['class' => 'form-control', 'id' => 'txtLng', 'readonly']) }}
 		</div>
 
 	</div>

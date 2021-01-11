@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Agent extends Model
 {
     protected $fillable = [
-        'user_id', 'name', 'slug', 'excerpt', 'biography', 'address', 'phone', 'domain', 'email', 'coordinate', 'file', 'country','city', 'address', 'latitud', 'longitud'
+        'user_id', 'name', 'slug', 'excerpt', 'biography', 'address', 'phone', 'domain', 'email', 'coordinate', 'file', 'country','city', 'address', 'latitud', 'longitud', 'state', 'zip', 'title','type'
     ];
     public function user()
     {
