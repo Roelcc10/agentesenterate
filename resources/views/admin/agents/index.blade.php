@@ -49,6 +49,7 @@
 
                                 <a href="{{ route('agents.show', $agent->id) }}" class="btn btn-sm btn-info">Ver</a>
                                 <button class="btn btn-sm btn-danger" type="submit">Eliminar</button>
+                            <button type="button" class="btn btn-sm btn-default" id="botonOn" onclick="FbotonOn()"> Público </button>
                             {!! Form::close() !!}
 
                         </td>

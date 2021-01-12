@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 use App\Agent;
+use App\Type;
 
 
 class AgentController extends Controller
@@ -32,6 +33,7 @@ class AgentController extends Controller
      */
     public function index(Request $request)
     {
+        $types = Type::all();
         $name = $request->get('name');
         $agents = Agent::orderBy('id', 'ASC')
             ->name($name)
@@ -39,7 +41,7 @@ class AgentController extends Controller
 
             ->paginate(15);
 
-        return view('admin.agents.index', compact('agents'));
+        return view('admin.agents.index', compact('agents', 'types'));
     }
 
     /**
@@ -47,12 +49,16 @@ class AgentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $types = Type::all();
 //        $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
 //        $tags       = Tag::orderBy('name', 'ASC')->get();
-
-        return view('admin.agents.create');
+        if ($request->input('type')!=null)
+        {
+            $vtypes = implode(',', $request->input('type'));
+        }
+        return view('admin.agents.create', compact('types'));
     }
 
     /**
@@ -63,9 +69,13 @@ class AgentController extends Controller
      */
     public function store(AgentStoreRequest $request)
     {
+
         $agent = Agent::create($request->all());
         $this->authorize('pass', $agent);
-
+        if ($request->input('type')!=null)
+        {
+            $types = implode(',', $request->input('type'));
+        }
         //IMAGE 
         if($request->file('image')){
             $path = Storage::disk('public')->put('image',  $request->file('image'));
@@ -86,10 +96,11 @@ class AgentController extends Controller
      */
     public function show($id)
     {
+        $types = Type::all();
         $agent = Agent::find($id);
         $this->authorize('pass', $agent);
 
-        return view('admin.agents.show', compact('agent'));
+        return view('admin.agents.show', compact('agent', 'types'));
     }
 
     /**
@@ -100,12 +111,12 @@ class AgentController extends Controller
      */
     public function edit($id)
     {
-
+        $types = Type::all();
 //        $agent       = Agent::find($id);
         $agent= Agent::where('id', $id)->firstOrFail();
         $this->authorize('pass', $agent);
 
-        return view('admin.agents.edit', compact('agent'));
+        return view('admin.agents.edit', compact('agent', 'types'));
     }
 
     /**

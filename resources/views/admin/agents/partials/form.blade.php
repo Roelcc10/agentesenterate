@@ -8,8 +8,18 @@
 	{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
 </div>
 <div class="form-group">
-    {!! Form::select('type', [null => 'Selecciona el tipo'] + ['auto' => 'Auto','hogar'=>'Hogar','comercial'=>'Comercial','vida'=>'Vida','salud'=>'Salud'], null, ['class' => 'form-control']) !!}
+{{--    {!! Form::select('type', [null => 'Selecciona el tipo'] + ['auto' => 'Auto','hogar'=>'Hogar','comercial'=>'Comercial','vida'=>'Vida','salud'=>'Salud'], null, ['class' => 'form-control']) !!}--}}
+    {{--{{ Form::select('types[]', $types, null, ['id' => 'types', 'class'=>'form-control', 'multiple' => 'multiple']) }}--}}
+    <select name="types[]" id="types" class="form-control selectpicker" data-style="btn-default" multiple="multiple" title="Seleccione una o varias">
+        @foreach ($types as $type)
+            <option value="{{ $type->id }}">{{ $type->name }}</option>
+        @endforeach
+    </select>
 </div>
+{{--<select id="types" class="js-example-basic-multiple" name="states[]" multiple="multiple">--}}
+    {{--<option value="AL">Alabama</option>--}}
+    {{--<option value="WY">Wyoming</option>--}}
+{{--</select>--}}
 
 <div class="form-group">
     {{ Form::label('slug', 'Estado') }}
@@ -96,6 +106,16 @@
 </div>
 
 @section('scripts')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script>
+//        $(document).ready(function() {
+//            $('#types').select2();
+//        });
+        $('#types').select2({
+            placeholder: "Elige uno o varios tipos de agente",
+        });
+    </script>
 <script src="{{ asset('vendor/stringToSlug/jquery.stringToSlug.min.js') }}"></script>
 <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
 <script>

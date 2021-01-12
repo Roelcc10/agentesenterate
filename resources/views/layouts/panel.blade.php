@@ -16,6 +16,7 @@
     <link href="{{ asset('agents_public/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
     <!-- Argon CSS -->
     <link href="{{ asset('agents_public/css/argon.css?v=2') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     @yield('styles')
 </head>
 
@@ -146,6 +147,15 @@
 <script src="{{ asset('agents_public/vendor/chart.js/dist/Chart.min.js') }}"></script>
 <script src="{{ asset('agents_public/vendor/chart.js/dist/Chart.extension.js') }}"></script>
 @yield('scripts')
+<script>
+    var valor = true
+    function FbotonOn() {
+        var uno = document.getElementById('botonOn');
+        valor?uno.innerText = "Privado":uno.innerText = "Público";
+        valor=!valor
+    }
+
+</script>
 <!-- Argon JS -->
 <script src="{{ asset('agents_public/js/argon.js?v=1.0.0') }}"></script>
 </body>

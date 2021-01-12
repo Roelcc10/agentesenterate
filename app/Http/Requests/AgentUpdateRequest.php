@@ -28,11 +28,12 @@ class AgentUpdateRequest extends FormRequest
             'slug'          => 'required|unique:agents,slug,' . $this->agent,
             'user_id'       => 'required|integer',
             'biography'          => 'required',
+            'status'        => 'required|in:DRAFT,PUBLISHED',
 
         ];
 
         if($this->get('image'))        
-            $rules = array_merge($rules, ['image'         => 'mime:jpg,jpeg,png']);
+            $rules = array_merge($rules, ['image'         => 'mimes:jpg,jpeg,png']);
 
         return $rules;
     }
