@@ -39,7 +39,7 @@ class AgentController extends Controller
             ->name($name)
             ->where('user_id', auth()->user()->id)
 
-            ->paginate(15);
+            ->paginate(140);
 
         return view('admin.agents.index', compact('agents', 'types'));
     }
